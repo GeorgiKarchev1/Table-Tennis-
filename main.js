@@ -20,6 +20,7 @@ const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
 camera.position.set(0, 5, 10);
 const controls = new OrbitControls(camera, renderer.domElement);
+
 controls.enableDamping = true;
 controls.enablePan = false;
 controls.minDistance = 5;
@@ -27,6 +28,10 @@ controls.maxDistance = 20;
 controls.minPolarAngle = 0.5;
 controls.maxPolarAngle = 1.5;
 controls.autoRotate = false;
+// Толкова търсене на тези неща 
+controls.enableRotate = false;
+controls.enableZoom = false;
+
 controls.target = new THREE.Vector3(0, 1, 0);
 controls.update();
 
