@@ -29,8 +29,8 @@ controls.minPolarAngle = 0.5;
 controls.maxPolarAngle = 1.5;
 controls.autoRotate = false;
 // Толкова търсене на тези неща 
-controls.enableRotate = false;
-controls.enableZoom = false;
+// controls.enableRotate = false;
+// controls.enableZoom = false;
 
 controls.target = new THREE.Vector3(0, 1, 0);
 controls.update();
@@ -66,7 +66,23 @@ loader.load('scene.gltf', (gltf) => {
 
   mesh.position.set(0, 0, 1);
   scene.add(mesh);
-
+  
+  const loader2 = new GLTFLoader().setPath('models/');
+  loader2.load('hilka.gltf', (gltf) => {
+    console.log('loading second model');
+    const mesh = gltf.scene;
+    
+    mesh.traverse((child) => {
+      if (child.isMesh) {
+        child.castShadow = true;
+        child.receiveShadow = true;
+      }
+    });
+  
+    mesh.position.set(2, 0, 0); // Променете позицията според вашите нужди
+    scene.add(mesh);
+  });
+  
   document.getElementById('progress-container').style.display = 'none';
 }, (xhr) => {
   console.log(`loading ${xhr.loaded / xhr.total * 100}%`);
