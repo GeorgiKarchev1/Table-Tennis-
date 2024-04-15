@@ -47,7 +47,7 @@ groundMesh.receiveShadow = true;
 scene.add(groundMesh);
 
 const spotLight = new THREE.SpotLight(0xffffff, 3000, 100, 0.22, 1);
-spotLight.position.set(0, 25, 0);
+spotLight.position.set(25 , 25, 25);
 spotLight.castShadow = true;
 spotLight.shadow.bias = -0.0001;
 scene.add(spotLight);
@@ -80,6 +80,10 @@ loader.load('scene.gltf', (gltf) => {
     });
   
     mesh.position.set(2, 0, 0); // Променете позицията според вашите нужди
+    mesh.scale.set(0.1, 0.1, 0.1); // Примерен мащаб
+    const secondModelLight = new THREE.PointLight(0xffffff, 1, 100); // Пример на точкова светлина
+    secondModelLight.position.set(25, 25, 25); // Примерна позиция на светлината
+     mesh.add(secondModelLight); 
     scene.add(mesh);
   });
   
